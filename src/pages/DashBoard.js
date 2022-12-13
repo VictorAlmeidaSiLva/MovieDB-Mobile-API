@@ -58,17 +58,19 @@ export default function Dashboard() {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <TouchableOpacity  onPress={() => navigation.navigate('Favoritos')}>
-                    <Text className='text-white' >Favoritos</Text>
+                <TouchableOpacity className="bg-lime-500 rounded w-24 h-8" onPress={() => navigation.navigate('Favoritos')}>
+                    <Text className="text-center text-lg font-bold">Favoritos</Text>
                 </TouchableOpacity>
                 {filmes.map(filme => (
                     <View className="flex-1 items-center justify-center" key={filme.id}>
-                        <Text className="text-lg text-white">{filme.title}</Text>
+                        <Text className="text-lg text-white font-bold">{filme.title}</Text>
                         <Image style={styles.image}
                             source={{ uri: `https://image.tmdb.org/t/p/original/${filme.poster_path}` }} />
-                        <TouchableOpacity className="bg-lime-500 hover:bg-cyan-600" onPress={() => navigation.navigate('Detalhes', `${filme.id}`)}>
-                            <Text className='text-white'>Ver Detalhes</Text>
+                        <View className="py-1"></View>
+                        <TouchableOpacity className="bg-lime-500 rounded" onPress={() => navigation.navigate('Detalhes', `${filme.id}`)}>
+                            <Text className="text-base w-15 h-7 font-bold">Detalhes</Text>
                         </TouchableOpacity>
+                        <View className="py-1"></View>
                     </View>
                 ))}
             </ScrollView>

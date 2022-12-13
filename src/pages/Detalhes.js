@@ -52,23 +52,29 @@ export default function Detalhes(ident) {
 
         navigation.navigate('Favoritos')
     }
+    
 
     return (
         <SafeAreaView>
-            <View>
+            <View style={styles.container}>
                 <Image style={styles.image}
                     source={{ uri: `https://image.tmdb.org/t/p/original/${filme.backdrop_path}` }} />
-                <Text>Nome do Filme: {filme.title}</Text>
-                <Text>Sinopse: {filme.overview}</Text>
-                <Text>Lançamento: {moment(new Date(`${filme.release_date}`)).format('DD-MM-YYYY')}</Text>
-                <TouchableOpacity onPress={salvarFilmes}>
-                    <Text>Salvar</Text>
+                <Text className='text-xl text-white font-bold'>{filme.title}</Text>
+                <Text className='text-xl text-white font-bold'>{filme.original_title}</Text>
+                <Text className='text-white'>Sinopse: {filme.overview}</Text>
+                <Text className='text-white'>Lançamento: {moment(new Date(`${filme.release_date}`)).format('DD-MM-YYYY')}</Text>
+                <Text className= "text-white text-xl"> Nota: {Number(filme.vote_average).toFixed(1)}</Text>
+                <View className="py-2"></View>
+                <TouchableOpacity className="bg-lime-500 rounded" onPress={salvarFilmes}>
+                    <Text className="text-center text-base w-20 h-7 font-bold">Salvar</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Favoritos')}>
-                    <Text>Favoritos</Text>
+                <View className="py-2"></View>
+                <TouchableOpacity className="bg-lime-500 rounded" onPress={() => navigation.navigate('Favoritos')}>
+                    <Text className="text-center text-base w-20 h-7 font-bold">Favoritos</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => Linking.openURL(`https://m.youtube.com/results?search_query=${filme.title} Trailer`)}>
-                    <Text>Trailer</Text>
+                <View className="py-2"></View>
+                <TouchableOpacity className="bg-lime-500 rounded" onPress={() => Linking.openURL(`https://m.youtube.com/results?search_query=${filme.title} Trailer`)}>
+                    <Text className=" text-center text-base w-20 h-7 font-bold">Trailer</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
@@ -76,10 +82,9 @@ export default function Detalhes(ident) {
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         //marginTop:5,
         alignItems: 'center',
-        backgroundColor: '#FFFFFF'
+        backgroundColor: '#1C1C1C'
     },
     image: {
         height: 200,
